@@ -1,0 +1,382 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateBrokers (20181006204608)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "brokers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "encrypted_password" varchar, "profile_picture" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181006204608_create_brokers.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181006204608"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateNames (20181006205720)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "names" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar, "coordinates" varchar, "price" float, "status" varchar, "active" boolean, "broker_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_56052dd3cc"
+FOREIGN KEY ("broker_id")
+  REFERENCES "brokers" ("id")
+)[0m
+  ↳ db/migrate/20181006205720_create_names.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_names_on_broker_id" ON "names" ("broker_id")[0m
+  ↳ db/migrate/20181006205720_create_names.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181006205720"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-10-06 20:57:34.086215"], ["updated_at", "2018-10-06 20:57:34.086215"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateNames (20181006205720)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.8ms)[0m  [1m[35mDROP TABLE "names"[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20181006205720"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUnits (20181006205844)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181006205844_create_units.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "units" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "coordinates" varchar, "price" float, "status" varchar, "active" boolean, "broker_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_9e1c07e183"
+FOREIGN KEY ("broker_id")
+  REFERENCES "brokers" ("id")
+)[0m
+  ↳ db/migrate/20181006205844_create_units.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_units_on_broker_id" ON "units" ("broker_id")[0m
+  ↳ db/migrate/20181006205844_create_units.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181006205844"]]
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2018-10-06 17:07:43 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/tylernodell/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/tylernodell/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/tylernodell/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/brokets" for 127.0.0.1 at 2018-10-06 17:07:56 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/brokets"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:07:58 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.5ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+Completed 200 OK in 12ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBroker Create (1.4ms)[0m  [1m[32mINSERT INTO "brokers" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-10-06 21:08:31.754287"], ["updated_at", "2018-10-06 21:08:31.754287"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:08:36 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2018-10-06 17:08:37 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBroker Load (0.3ms)[0m  [1m[34mSELECT  "brokers".* FROM "brokers" WHERE "brokers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUnit Create (1.1ms)[0m  [1m[32mINSERT INTO "units" ("broker_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["broker_id", 1], ["created_at", "2018-10-06 21:09:48.671543"], ["updated_at", "2018-10-06 21:09:48.671543"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:09:57 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.3ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/brokers/1" for 127.0.0.1 at 2018-10-06 17:10:00 -0400
+Processing by BrokersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT  "brokers".* FROM "brokers" WHERE "brokers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/brokers_controller.rb:44
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/units" for 127.0.0.1 at 2018-10-06 17:10:10 -0400
+Processing by UnitsController#index as HTML
+  [1m[36mUnit Load (0.4ms)[0m  [1m[34mSELECT "units".* FROM "units"[0m
+  ↳ app/controllers/units_controller.rb:8
+Completed 200 OK in 19ms (Views: 12.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-06 17:16:34 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/tylernodell/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/tylernodell/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/tylernodell/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/templates/rails/welcome/index.html.erb (2.9ms)
+Completed 200 OK in 10ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/broker" for 127.0.0.1 at 2018-10-06 17:16:41 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/broker"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:16:42 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.67ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd80f2eb168>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:17:20 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.1ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.16ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd80e22efa0>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:17:33 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.1ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.28ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd813447170>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:20:10 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 15ms (Views: 10.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:20:19 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.66ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd80f300608>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:20:34 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.63ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd8131e3870>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:20:53 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.65ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd8135bab38>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:22:16 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.3ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.41ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd813244a30>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:22:17 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.26ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd80dce0058>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:23:04 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 13ms (Views: 9.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:23:20 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.45ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `units' for #<Broker:0x007fd80f791ac8>):
+  
+app/controllers/brokers_controller.rb:8:in `index'
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:23:29 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.2ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/units" for 127.0.0.1 at 2018-10-06 17:23:35 -0400
+Processing by UnitsController#index as HTML
+  [1m[36mUnit Load (0.2ms)[0m  [1m[34mSELECT "units".* FROM "units"[0m
+  ↳ app/controllers/units_controller.rb:8
+[active_model_serializers]   [1m[36mBroker Load (0.3ms)[0m  [1m[34mSELECT  "brokers".* FROM "brokers" WHERE "brokers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/units_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.43ms)
+Completed 200 OK in 31ms (Views: 23.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/brokers" for 127.0.0.1 at 2018-10-06 17:24:49 -0400
+Processing by BrokersController#index as HTML
+  [1m[36mBroker Load (0.3ms)[0m  [1m[34mSELECT "brokers".* FROM "brokers"[0m
+  ↳ app/controllers/brokers_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/units" for 127.0.0.1 at 2018-10-06 17:24:52 -0400
+Processing by UnitsController#index as HTML
+  [1m[36mUnit Load (0.2ms)[0m  [1m[34mSELECT "units".* FROM "units"[0m
+  ↳ app/controllers/units_controller.rb:8
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+Completed 200 OK in 16ms (Views: 12.6ms | ActiveRecord: 0.7ms)
+
+
